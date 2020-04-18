@@ -24,22 +24,28 @@
 四、专题名称（先列完大纲再开始写）
 
 1. Android音视频开发（一）如何采集音频 【done】
-2. Android音视频开发（二）如何播放音频
-3. Android音视频开发（三）如何使用Camera API进行视频的采集
-4. Android音视频开发（四）如何使用Android原生API解析和封装mp4文件
-5. Android音视频开发（五）如何使用MediaCodec API硬编、硬解AAC
-6. Android音视频开发（六）如何使用MediaCodec API硬编、硬解H.264
-7. Android音视频开发（七）如何采集音视频、编码、封包成mp4输出
-8. Android音视频开发（八）如何解析mp4、解码、渲染到屏幕
-9. Android音视频开发（九）如何使用FFmpeg做一个自己的播放器
-10. Android音视频开发（十）如何使用x264库软编H264
-11. Android音视频开发（十一）如何使用librtmp库推流
-12. Android音视频开发（十二）如何做一款短视频 APP，实现断点拍摄
-13. Android音视频开发（十二）如何做一款短视频 APP，添加水印
-14. Android音视频开发（十二）如何做一款短视频 APP，本地转码
-15. Android音视频开发（十二）如何做一款短视频 APP，视频剪辑
-16. Android音视频开发（十二）如何做一款短视频，视频拼接
-17. Android音视频开发（十二）如何做一款短视频，MV 特效
+2. Android音视频开发（二）如何播放音频 【done】
+3. Android音视频开发（三）使用OpenGL ES播放音频
+4. Android音视频开发（四）如何使用Camera API进行视频的采集预览
+5. Android音视频开发（五）如何使用MediaCodec API硬件编码AAC
+4. Android音视频开发（）如何使用libfdk_aac软件编码AAC
+4. Android音视频开发（）如何使用MediaCodec API硬件解码AAC
+4. Android音视频开发（）如何使用libfdk_aac软件解码AAC
+6. Android音视频开发（）如何使用MediaCodec API硬件编码H.264
+4. Android音视频开发（）如何使用libx264软件编码H.264
+4. Android音视频开发（）如何使用MediaCodec API硬件解码H.264
+4. Android音视频开发（）如何使用FFmpeg软件解码H.264
+4. Android音视频开发（）如何使用原生API解析和封装mp4文件
+7. Android音视频开发（）如何采集音视频、编码、封包成mp4输出
+8. Android音视频开发（）如何解析mp4、解码、渲染到屏幕
+9. Android音视频开发（）如何使用FFmpeg做一个自己的播放器
+11. Android音视频开发（）如何使用librtmp库推流
+12. Android音视频开发（）如何做一款短视频 APP，实现断点拍摄
+13. Android音视频开发（）如何做一款短视频 APP，添加水印
+14. Android音视频开发（）如何做一款短视频 APP，本地转码
+15. Android音视频开发（）如何做一款短视频 APP，视频剪辑
+16. Android音视频开发（）如何做一款短视频，视频拼接
+17. Android音视频开发（）如何做一款短视频，MV 特效
 x. Android音视频开发（x）x
 
 1. FFmepg音视频开发（一）如何编译FFmepg 【done】

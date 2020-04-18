@@ -32,7 +32,7 @@ ffprobe -show_frames 1.mp4
 ffprobe -show_packets 1.mp4
 ```
 
-##2. ffplay
+## 2. ffplay
 
 ffplay是一个播放媒体文件的工具。
 

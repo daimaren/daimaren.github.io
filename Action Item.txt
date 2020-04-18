@@ -42,7 +42,7 @@
 17. Android音视频开发（十二）如何做一款短视频，MV 特效
 x. Android音视频开发（x）x
 
-1. FFmepg音视频开发（一）如何编译FFmepg
+1. FFmepg音视频开发（一）如何编译FFmepg done
 x. FFmepg音视频开发（x）如何使用FFmepg命令行
 x. FFmepg音视频开发（x）如何打印日志
 x. FFmepg音视频开发（x）如何提取码流的基本信息

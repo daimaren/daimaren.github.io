@@ -1,14 +1,14 @@
 ---
 layout:     post
-title:      x
+title:      FFmepg音视频开发（一）如何编译FFmepg
 subtitle:   
-date:       2020-04-17
+date:       2020-04-18
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true
 tags:
-    - x
-    - x
+    - FFmpeg
+    - 音视频
 ---
 
 ## 1. 下载FFmpeg

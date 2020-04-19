@@ -2,7 +2,7 @@
 layout:     post
 title:      Android音视频开发（六）如何使用libfdk_aac软件编码AAC
 subtitle:   
-date:       2020-04-18
+date:       2020-04-20
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true
@@ -41,15 +41,9 @@ audiostream = avformat_new_stream(avFormatContext, NULL);
 
 现在要为audioStream的Codec属性填充内容了。Codec属性是一个AVCodecContext的结构体类型，需要为该结构体填充如下几个属性，首先是codec type，赋值为AVMEDIA_TYPE_AUDIO，代表其是音频类型：其次是bit rate，samplerate， channels等基本属性，然后是channel_layout ，最后也是最重要的sample fmt，代表了如何数字化表示采样，使用的是AV_SAMPLE_FMT_S16，即用一个short来表示一个采样点，这样就把AVCodecContext结构体构造完成了。
 
-​	下面要准备最重要的编码器了，通过调用avcodec_find_encoder_by_name函数来找出对应的编码器，然
+​	下面要准备最重要的编码器了，通过调用avcodec_find_encoder_by_name函数来找出对应的编码器，然后调用方法avcodec_open2打开这个编码器，接下来为编码器指定frame_size的大小，一般指定1024作为一帧的大小，至此我们就把编码器部分给分配好了。
 
-后调用方法avcodec_open2打开这个编码器，接下来为编码器指定frame_size的大小，一般指定1024作为一帧的大小，至此我们就把编码器部分给分配好了。
-
-​	在此需要注意的是，某些编码器只允许特定格式的PCM作为输入源，比如声道数、采样率、表示
-
-格式（比如LAME编码器就不允许SInt16的表示格式）的要求，所以需要构造个重采样器来将PCM数据转
-
-换为编码器输人的PCM数据，即前面讲解过的需要将输入的声道、采样率、格式和输出的声道、采样率、表示格式传递给初始化方法，然后分配出重采样上下文SwrContext。此外，还要分配一个AVFrame类型的inputFrame，作为输入PCM数据存放的地方，这里需要知道inputFrame分配的buffer的大小，如上一步所述，默认一帧的大小是1024，所以对应的buffer（按照uint8_t类型作为一个元素来分配）大小就应该是
+​	在此需要注意的是，某些编码器只允许特定格式的PCM作为输入源，比如声道数、采样率、表示格式（比如LAME编码器就不允许SInt16的表示格式）的要求，所以需要构造个重采样器来将PCM数据转换为编码器输人的PCM数据，即前面讲解过的需要将输入的声道、采样率、格式和输出的声道、采样率、表示格式传递给初始化方法，然后分配出重采样上下文SwrContext。此外，还要分配一个AVFrame类型的inputFrame，作为输入PCM数据存放的地方，这里需要知道inputFrame分配的buffer的大小，如上一步所述，默认一帧的大小是1024，所以对应的buffer（按照uint8_t类型作为一个元素来分配）大小就应该是：
 
 buffersize = frame_size * sizeof(SInt 16) * channels；
 
@@ -59,15 +53,7 @@ buffersize = frame_size * sizeof(SInt 16) * channels；
 
 void encode(byte* buffer, int size)；
 
-这里传入的参数是uint8 t类型的指针，以及这块内存所表示的数据长度，具体的实现是将该buffer填充入
-
-inputFrame，由于前面已经知道了每一帧buffer需要填充的大小是多少，所以这里可以利用一个while循
-
-环来做数据的缓冲，一次性填充到AVFrame中去，然后调用编码方法avcodec_encode_audio2，该方法会
-
-将编码好的数据放入AVPacket的结构体中，接着调用av_interleaved_write _frame方法，则可
-
-以将该packet输出到最终的文件中去。
+这里传入的参数是uint8 t类型的指针，以及这块内存所表示的数据长度，具体的实现是将该buffer填充入inputFrame，由于前面已经知道了每一帧buffer需要填充的大小是多少，所以这里可以利用一个while循环来做数据的缓冲，一次性填充到AVFrame中去，然后调用编码方法avcodec_encode_audio2，该方法会将编码好的数据放入AVPacket的结构体中，接着调用av_interleaved_write _frame方法，则可以将该packet输出到最终的文件中去。
 
 ​	最后，来看一下第三个接口方法：
 
@@ -77,9 +63,7 @@ void destroy();
 
 ​	上述代码所述方法需要销毁前面所分配的资源以及打开的连接通道。
 
-​	如果初始化了重采样器，那么就销毁重采样的数据缓冲区以及重采样上下文；然后销毁为输入PCM数据
-
-分配的AVFrame类型的inputFrame，再判断标志isWriteHeaderSuccess变量决定是否需要填充duration以及调用方法av_write_trailer，最终关闭编码器以及连接通道。
+​	如果初始化了重采样器，那么就销毁重采样的数据缓冲区以及重采样上下文；然后销毁为输入PCM数据分配的AVFrame类型的inputFrame，再判断标志isWriteHeaderSuccess变量决定是否需要填充duration以及调用方法av_write_trailer，最终关闭编码器以及连接通道。
 
 **2. 实例Demo**
 

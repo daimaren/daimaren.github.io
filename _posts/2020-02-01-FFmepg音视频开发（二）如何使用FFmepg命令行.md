@@ -2,7 +2,7 @@
 layout:     post
 title:      FFmepg音视频开发（二）如何使用FFmepg命令行
 subtitle:   
-date:       2020-04-18
+date:       2020-02-01
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true

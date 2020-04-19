@@ -23,12 +23,14 @@
 
 四、专题名称（先列完大纲再开始写）
 
+专题1：
 1. Android音视频开发（一）如何采集音频 【done】
 2. Android音视频开发（二）如何播放音频 【done】
-3. Android音视频开发（三）使用OpenGL ES播放音频 【done】
-4. Android音视频开发（四）如何使用Camera API进行视频的采集预览 【doing】
+3. Android音视频开发（三）使用OpenSL ES播放音频 【done】
+4. Android音视频开发（四）如何使用Camera API采集预览视频 【todo】
 5. Android音视频开发（五）如何使用MediaCodec硬件编码AAC
-4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC
+4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC（上）【done】
+4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC（下）
 4. Android音视频开发（）如何使用MediaCodec硬件解码AAC
 4. Android音视频开发（）如何使用libfdk_aac软件解码AAC
 6. Android音视频开发（）如何使用MediaCodec硬件编码H.264
@@ -48,22 +50,47 @@
 17. Android音视频开发（）如何做一款短视频，MV 特效
 x. Android音视频开发（x）x
 
+专题2：
 1. FFmepg音视频开发（一）如何编译FFmepg 【done】
 2. FFmepg音视频开发（二）如何使用FFmepg命令行 【done】
 FFmpeg API的介绍与使用
+FFmpeg常用API分析理解
 x. FFmepg音视频开发（x）如何打印日志
 x. FFmepg音视频开发（x）如何提取码流的基本信息
 x. FFmepg音视频开发（x）如何读取每一帧的信息
 x. FFmepg音视频开发（x）x
 
-
-1. 音视频疑难杂症排查（一）如何分析播放失败
-
+专题3：
 1. OpenGL ES 移动端开发（一）OpenGL ES介绍 【done】
-2. OpenGL ES 移动端开发（三）GLSL语法与内建函数 【done】
-3. OpenGL ES 移动端开发（二）OpenGL ES渲染管线 【done】
-x. Android音视频开发（x）x
+2. OpenGL ES 移动端开发（二）GLSL语法与内建函数 【done】
+3. OpenGL ES 移动端开发（三）OpenGL ES渲染管线 【done】
+4. OpenGL ES 移动端开发（四）创建第一个Program
+x.OpenGL ES 移动端开发（x）x
 
 如何使用OpenGL绘制一个三角形
 如何使用OpenGL显示一张图片
 如何实现视频的剪裁、旋转、水印、滤镜，并学习 OpenGL 高级特性，如：VBO，VAO，FBO
+OpenGLES滤镜开发
+
+专题4：
+1. 音视频疑难杂症排查（一）如何分析播放失败
+
+专题5：
+1. IOS音视频开发（一）
+
+专题6：
+《算法与数据结构 C语言描述》
+
+专题7：
+Android 视频播放器开发
+
+专题8：
+Android 视频录制App开发
+
+
+参考的轮子：
+https://github.com/zhanxiaokai
+https://glumes.com/
+https://www.jianshu.com/u/fd6f2b25d0f4
+https://www.cnblogs.com/renhui/category/1011048.html
+https://github.com/byhook/ffmpeg4android

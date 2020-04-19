@@ -2,7 +2,7 @@
 layout:     post
 title:      FFmepg音视频开发（一）如何编译FFmepg
 subtitle:   
-date:       2020-04-18
+date:       2020-02-02
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true

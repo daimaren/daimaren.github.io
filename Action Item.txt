@@ -28,7 +28,7 @@
 3. Android音视频开发（三）使用OpenGL ES播放音频 【done】
 4. Android音视频开发（四）如何使用Camera API进行视频的采集预览 【doing】
 5. Android音视频开发（五）如何使用MediaCodec硬件编码AAC
-4. Android音视频开发（）如何使用libfdk_aac软件编码AAC
+4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC
 4. Android音视频开发（）如何使用MediaCodec硬件解码AAC
 4. Android音视频开发（）如何使用libfdk_aac软件解码AAC
 6. Android音视频开发（）如何使用MediaCodec硬件编码H.264
@@ -50,6 +50,7 @@ x. Android音视频开发（x）x
 
 1. FFmepg音视频开发（一）如何编译FFmepg 【done】
 2. FFmepg音视频开发（二）如何使用FFmepg命令行 【done】
+FFmpeg API的介绍与使用
 x. FFmepg音视频开发（x）如何打印日志
 x. FFmepg音视频开发（x）如何提取码流的基本信息
 x. FFmepg音视频开发（x）如何读取每一帧的信息

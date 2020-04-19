@@ -2,7 +2,7 @@
 layout:     post
 title:      OpenGL ES 移动端开发（二）OpenGL ES渲染管线
 subtitle:   
-date:       2020-04-17
+date:       2020-04-02
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true

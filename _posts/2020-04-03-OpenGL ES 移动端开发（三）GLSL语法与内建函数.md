@@ -2,7 +2,7 @@
 layout:     post
 title:      OpenGL ES 移动端开发（三）GLSL语法与内建函数
 subtitle:   
-date:       2020-04-17
+date:       2020-04-03
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true

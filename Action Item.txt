@@ -70,7 +70,7 @@ x. FFmepg音视频开发（x）x
 3. OpenGL ES 移动端开发（三）OpenGL ES渲染管线 【done】
 4. OpenGL ES 移动端开发（四）创建第一个Program
 x.OpenGL ES 移动端开发（x）x
-Android OpenGL ES 2D贴纸实现
+Android OpenGL ES 2D贴纸实现 //参考cain以及PngSequenceFilter实现
 
 如何使用OpenGL绘制一个三角形
 如何使用OpenGL显示一张图片
@@ -78,7 +78,8 @@ Android OpenGL ES 2D贴纸实现
 OpenGLES滤镜开发
 
 专题4：
-1. 音视频疑难杂症排查（一）如何分析播放失败
+1. 视频播放疑难杂症排查（一）如何分析播放失败
+1. 视频播放疑难杂症排查（二）
 
 专题5：
 1. IOS音视频开发（一）

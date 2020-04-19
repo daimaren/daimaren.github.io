@@ -1,13 +1,12 @@
 从大的项目中抽取出一个个小专题写分享笔记，可做小DEMO，好的部分记得复用发推文或者组内分享，以后工作需要的时候直接看笔记
 效率比时间更重要，目标进byte，所以要聚焦列出byte的工作要求，吃透每一个技术点，最快的时间达到并超越。
 
-一、列出byte的工作要求：
-
-0. C++写跨平台SDK
-1. 精通录制、视频编辑、编解码等核心模块
-2. 精通FFmpeg openGL
-3. 人脸识别、人脸贴纸等相关经验
-3. 性能优化，学习大佬的代码规范
+一、列出byte的工作要求，精力有限分清楚哪些要精通，哪些是熟悉：
+0. 精通聚焦C++写跨平台SDK
+1. 精通录制流程、编辑流程、编解码等核心模块
+2. 精通FFmpeg，openGL只保证熟悉，熟悉Android
+3. 熟悉人脸识别、人脸贴纸等经验
+3. 精通性能调优方法和工具，学习大佬的代码规范
 
 二、怎么保证吃透每一个技术点：
 
@@ -21,6 +20,7 @@
 - 可以后期增加的功能点
 - 可以后期优化的地方
 
+
 四、专题名称（先列完大纲再开始写）
 
 专题1：
@@ -28,27 +28,30 @@
 2. Android音视频开发（二）如何播放音频 【done】
 3. Android音视频开发（三）使用OpenSL ES播放音频 【done】
 4. Android音视频开发（四）如何使用Camera API采集预览视频 【todo】
-5. Android音视频开发（五）如何使用MediaCodec硬件编码AAC
-4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC（上）【done】
-4. Android音视频开发（六）如何使用libfdk_aac软件编码AAC（下）
-4. Android音视频开发（）如何使用MediaCodec硬件解码AAC
-4. Android音视频开发（）如何使用libfdk_aac软件解码AAC
-6. Android音视频开发（）如何使用MediaCodec硬件编码H.264
-4. Android音视频开发（）如何使用libx264软件编码H.264
-4. Android音视频开发（）如何使用MediaCodec硬件解码H.264
-4. Android音视频开发（）如何使用FFmpeg软件解码H.264
-4. Android音视频开发（）如何使用原生API解析和封装mp4文件
+5. Android音视频开发（五）如何使用MediaCodec硬件编码AAC 【done】
+4. Android音视频开发（六）如何使用ffmpeg软件编码AAC【done】
+4. Android音视频开发（七）如何使用libfdk_aac软件编码AAC
+4. Android音视频开发（八）如何使用MediaCodec硬件解码AAC
+4. Android音视频开发（九）如何使用ffmpeg软件解码AAC
+4. Android音视频开发（十）如何使用libfdk_aac软件解码AAC
+6. Android音视频开发（十一）如何使用MediaCodec硬件编码H.264
+4. Android音视频开发（十二）如何使用libx264软件编码H.264
+4. Android音视频开发（十三）如何使用MediaCodec硬件解码H.264
+4. Android音视频开发（十四）如何使用FFmpeg软件解码H.264
+4. Android音视频开发（）如何使用MediaExtractor解析mp4文件
+4. Android音视频开发（）如何使用MediaMuxer封装mp4文件
 7. Android音视频开发（）如何采集音视频、编码、封包成mp4输出
 8. Android音视频开发（）如何解析mp4、解码、渲染到屏幕
-9. Android音视频开发（）如何使用FFmpeg做一个自己的播放器
 11. Android音视频开发（）如何使用librtmp库推流
-12. Android音视频开发（）如何做一款短视频 APP，实现断点拍摄
-13. Android音视频开发（）如何做一款短视频 APP，添加水印
-14. Android音视频开发（）如何做一款短视频 APP，本地转码
-15. Android音视频开发（）如何做一款短视频 APP，视频剪辑
-16. Android音视频开发（）如何做一款短视频，视频拼接
-17. Android音视频开发（）如何做一款短视频，MV 特效
-x. Android音视频开发（x）x
+
+专题：
+12. Android短视频APP开发（）如何做一款短视频 APP，实现断点拍摄
+13. Android短视频APP开发（）如何做一款短视频 APP，添加水印
+14. Android短视频APP开发（）如何做一款短视频 APP，本地转码
+15. Android短视频APP开发（）如何做一款短视频 APP，视频剪辑
+16. Android短视频APP开发（）如何做一款短视频，视频拼接
+17. Android短视频APP开发（）如何做一款短视频，MV 特效
+x. Android短视频APP开发（x）x
 
 专题2：
 1. FFmepg音视频开发（一）如何编译FFmepg 【done】
@@ -59,6 +62,7 @@ x. FFmepg音视频开发（x）如何打印日志
 x. FFmepg音视频开发（x）如何提取码流的基本信息
 x. FFmepg音视频开发（x）如何读取每一帧的信息
 x. FFmepg音视频开发（x）x
+如何使用FFmpeg做一个自己的播放器
 
 专题3：
 1. OpenGL ES 移动端开发（一）OpenGL ES介绍 【done】
@@ -66,6 +70,7 @@ x. FFmepg音视频开发（x）x
 3. OpenGL ES 移动端开发（三）OpenGL ES渲染管线 【done】
 4. OpenGL ES 移动端开发（四）创建第一个Program
 x.OpenGL ES 移动端开发（x）x
+Android OpenGL ES 2D贴纸实现
 
 如何使用OpenGL绘制一个三角形
 如何使用OpenGL显示一张图片

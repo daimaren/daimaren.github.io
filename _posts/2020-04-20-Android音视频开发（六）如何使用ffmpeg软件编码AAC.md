@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Android音视频开发（六）如何使用libfdk_aac软件编码AAC
-subtitle:   
+title:      Android音视频开发（六）如何使用ffmpeg软件编码AAC
+subtitle:   libfdk_aac库编译进FFmpeg
 date:       2020-04-20
 author:     Glen
 header-img: img/post-bg-none.jpg

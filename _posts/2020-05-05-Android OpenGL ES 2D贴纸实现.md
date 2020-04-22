@@ -2,7 +2,7 @@
 layout:     post
 title:      Android OpenGL ES人脸贴纸实现
 subtitle:   人脸识别、人脸贴纸
-date:       2020-05-01
+date:       2020-05-05
 author:     Glen
 header-img: img/post-bg-none.jpg
 catalog: true

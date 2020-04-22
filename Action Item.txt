@@ -38,13 +38,13 @@
 4. Android音视频开发（十二）如何使用libx264软件编码H.264
 4. Android音视频开发（十三）如何使用MediaCodec硬件解码H.264
 4. Android音视频开发（十四）如何使用FFmpeg软件解码H.264
-4. Android音视频开发（）如何使用MediaExtractor解析mp4文件
-4. Android音视频开发（）如何使用MediaMuxer封装mp4文件
-7. Android音视频开发（）如何采集音视频、编码、封包成mp4输出
-8. Android音视频开发（）如何解析mp4、解码、渲染到屏幕
-11. Android音视频开发（）如何使用librtmp库推流
+4. Android音视频开发（十五）如何使用MediaExtractor解析mp4文件
+4. Android音视频开发（十六）如何使用MediaMuxer封装mp4文件
+7. Android音视频开发（十七）如何采集音视频、编码、封包成mp4输出
+8. Android音视频开发（十八）如何解析mp4、解码、渲染到屏幕
+11. Android音视频开发（十九）如何使用librtmp库推流
 
-专题：
+专题2：
 12. Android短视频APP开发（）如何做一款短视频 APP，实现断点拍摄
 13. Android短视频APP开发（）如何做一款短视频 APP，添加水印
 14. Android短视频APP开发（）如何做一款短视频 APP，本地转码
@@ -56,8 +56,9 @@ x. Android短视频APP开发（x）x
 专题2：
 1. FFmepg音视频开发（一）如何编译FFmepg 【done】
 2. FFmepg音视频开发（二）如何使用FFmepg命令行 【done】
-FFmpeg API的介绍与使用
-FFmpeg常用API分析理解
+3. FFmepg音视频开发（三）FFmpeg API的分析
+4. FFmepg音视频开发（四）FFmpeg API的使用
+
 x. FFmepg音视频开发（x）如何打印日志
 x. FFmepg音视频开发（x）如何提取码流的基本信息
 x. FFmepg音视频开发（x）如何读取每一帧的信息
@@ -77,22 +78,25 @@ Android OpenGL ES 2D贴纸实现 //参考cain以及PngSequenceFilter实现
 如何实现视频的剪裁、旋转、水印、滤镜，并学习 OpenGL 高级特性，如：VBO，VAO，FBO
 OpenGLES滤镜开发
 
-专题4：
+专题5：
 1. 视频播放疑难杂症排查（一）如何分析播放失败
 1. 视频播放疑难杂症排查（二）
 
-专题5：
+专题6：
 1. IOS音视频开发（一）
 
-专题6：
+专题7：
 《算法与数据结构 C语言描述》
 
-专题7：
+专题8：
 Android 视频播放器开发
 
-专题8：
+专题9：
 Android 视频录制App开发
 
+专题10：
+1. 多媒体文件格式剖析（一）MP4篇
+2. 多媒体文件格式剖析（一）TS篇
 
 参考的轮子：
 https://github.com/zhanxiaokai

@@ -60,8 +60,6 @@ x. Android短视频APP开发（x）x
 4. FFmepg音视频开发（四）FFmpeg API的使用
 
 x. FFmepg音视频开发（x）如何打印日志
-x. FFmepg音视频开发（x）如何提取码流的基本信息
-x. FFmepg音视频开发（x）如何读取每一帧的信息
 x. FFmepg音视频开发（x）x
 如何使用FFmpeg做一个自己的播放器
 

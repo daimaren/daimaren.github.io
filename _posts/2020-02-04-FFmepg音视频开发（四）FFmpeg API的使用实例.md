@@ -94,19 +94,113 @@ AVFrame* videoFrame = avcodec_alloc_frame();
 **7. 读取流并解码**
 
 ```
+while (!finished) {
+    ret = av_read_frame(pFormatCtx, &packet);
+    if (ret < 0) {
+        LOGE("av_read_frame return an error");
+        if (ret != AVERROR_EOF) {
+            av_strerror(ret, errString, 128);
+            LOGE("av_read_frame return an not AVERROR_EOF error : %s", errString);
+        } else {
+            LOGI("input EOF");
+            is_eof = true;
+        }
+        av_free_packet(&packet);
+        break;
+    }
+    if (packet.stream_index == videoStreamIndex) {
+        decodeVideoFrame(packet, decodeVideoErrorState);
+    } else if (packet.stream_index == audioStreamIndex) {
+        int len = avcodec_decode_audio4(audioCodecCtx, audioFrame, &gotframe, packet);
+        if(len < 0) {
+            break;
+        }
+        if(gotframe) {
+            handleAudioFrame();
+        }
+    }
+    av_free_packet(&packet);
+}
 
 ```
 
 **8. 解码后数据处理**
 
 ```
-
+void* audioData;
+int numFrames;
+if (swrContext) {
+    const int ratio = 2;
+    const int bufSize = av_samples_get_buffer_size(NULL, numChannels, audioFrame->nb_samples * ratio, AV_SAMPLE_FMT_S16, 1);
+    if (!swrBuffer || swrBufferSize < bufSize) {
+        swrBufferSize = bufSize;
+        swrBuffer = realloc(swrBuffer, swrBufferSize);
+    }
+    byte *outbuf[2] = { (byte*) swrBuffer, NULL };
+    numFrames = swr_convert(swrContext, outbuf, audioFrame->nb_samples * ratio, (const uint8_t **) audioFrame->data, audioFrame->nb_samples);
+    LOGI("swr_convert success and numFrames is %d", numFrames);
+    if (numFrames < 0) {
+        LOGI("fail resample audio");
+        return NULL;
+    }
+    audioData = swrBuffer;
+} else {
+    if (audioCodecCtx->sample_fmt != AV_SAMPLE_FMT_S16) {
+        LOGI("bucheck, audio format is invalid");
+        return NULL;
+    }
+    audioData = audioFrame->data[0];
+    numFrames = audioFrame->nb_samples;
+}
 ```
 
 **9. 释放所有资源**
 
 ```
+//释放音频资源
+if (NULL != swrBuffer) {
+    free(swrBuffer);
+    swrBuffer = NULL;
+    swrBufferSize = 0;
+}
+if (NULL != swrContext) {
+    swr_free(&swrContext);
+    swrContext = NULL;
+}
+if (NULL != audioFrame) {
+    av_free(audioFrame);
+    audioFrame = NULL;
+}
+if (NULL != audioCodecCtx) {
+    avcodec_close(audioCodecCtx);
+    audioCodecCtx = NULL;
+}
 
+if (NULL != audioStreams) {
+    delete audioStreams;
+    audioStreams = NULL;
+}
+//释放视频资源
+if (NULL != videoFrame) {
+    av_free(videoFrame);
+    videoFrame = NULL;
+}
+if (NULL != videoCodecCtx) {
+    avcodec_close(videoCodecCtx);
+    videoCodecCtx = NULL;
+}
+if (NULL != videoStreams) {
+    delete videoStreams;
+    videoStreams = NULL;
+}
+if (NULL != pFormatCtx) {
+    pFormatCtx->interrupt_callback.opaque = NULL;
+    pFormatCtx->interrupt_callback.callback = NULL;
+    LOGI("avformat_close_input(&pFormatCtx)");
+    avformat_close_input(&pFormatCtx);
+    avformat_free_context(pFormatCtx);
+    pFormatCtx = NULL;
+}
 ```
 
 

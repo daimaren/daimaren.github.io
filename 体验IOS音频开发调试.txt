@@ -1,0 +1,6 @@
+task breakdown:
+
+1. 虚拟机安装的是mac OSX 10.12.2，参考前人的成功步骤 pass
+2. 下载xcode哪个版本，要严格对应，要确保build的软件能跑在我的iphone上 doing
+3. 下载xiaokai的demo, build pass, 真机调试pass
+4. 开始写IOS音视频开发专题，输出笔记和代码

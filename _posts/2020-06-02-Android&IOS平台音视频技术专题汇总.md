@@ -45,9 +45,9 @@ tags:
 
 #### 1.2 ExoPlayer 汇总
 
-[多媒体工程师必备技能](https://www.jianshu.com/p/c731515edb9d)
-[MediaPlayer 播放器全面剖析(一)](https://www.jianshu.com/p/db7104daa842)
-[MediaPlayer 播放器全面剖析(二)](https://www.jianshu.com/p/5513f0bd3dbf)
+[多媒体工程师必备技能](https://www.jianshu.com/p/c731515edb9d)<br>
+[MediaPlayer 播放器全面剖析(一)](https://www.jianshu.com/p/db7104daa842)<br>
+[MediaPlayer 播放器全面剖析(二)](https://www.jianshu.com/p/5513f0bd3dbf)<br>
 [MediaCodec底层原理剖析](https://www.jianshu.com/p/b7bacabcc019)<br>
 [使用MediaCodec 播放视频](https://www.jianshu.com/p/d406314ab63c)<br>
 [Android 平台音视频编辑功能 汇总](https://www.jianshu.com/p/cafac2b1c4fe)<br>

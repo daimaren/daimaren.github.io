@@ -11,13 +11,54 @@ tags:
     - 音视频
 ---
 
-**1. FFmpeg通用API**
+####通用API分析
 
-**av_register_all分析**
+**1.av_register_all分析**
 
-**2. 解码时用到的API分析**
+编译FFmpeg做的configure配置会生成两个文件：config.mk与config.h。config.mk实际上就是makefile文件需要包含进去的子模块，会作用在编译阶段，帮助开发者编译出正确的库；而config.h是作用在运行阶段，这一阶段将确定需要注册哪些容器以及编解码格式到FFmpeg框架中。所以该函数的内部实现会先调用avcodec_register_all来注册所有conf ig.h里面开放的编解码器，然后会注册所有的Muxer和Demuxer（也就是封装格式），最后注册所有的Protocol（即协议层的东西）。这样一来，在configure过程中开启（enable）或者关闭（disable）的选项就就作用到了运行时。
 
-**3. 编码时用到的API分析**
+**2.av_find_codec分析**
 
+这里面其实包含了两部分的内容：一部分是寻找解码器，一部分是寻找编码器。其实在第一步的avcodec_register_all函数里面已经把编码器和解码器都存放到一个链表中了，在这里寻找编码器或者解码器都是从第一步构造的链表中进行遍历，通过Codec的ID或者name进行条件匹配，最终返回对应的Codec。
 
+**3.avcodec_open2分析**
 
+该函数是打开编解码器（Codec）的函数，无论是编码过程还是解码过程，都会用到该函数，该函数的输入参数有三个：第一个是AVCodecContext，解码过程由FFmpeg引擎填充，编码过程由开发者自己构造，如果想要传入私有参数，则为它的priv_data设置参数，比如在libx264编码器中设置preset、tune、prof ile等；第二个参数是上一步通过av_f ind_codec寻找出来的编解码器（Codec）；第三个参数一般会传递NULL。具体到该函数的实现时，就会找到对应的实现文件，那么其是如何找到对应的实现文件的呢？这就需要回到第一步中来看看其是如何注册的，比如libx264的编码器，查看其注册会发现ff_libx264_encoder结构体的定义存在于libx264.c中，所以该Codec的生命周期方法就会委托给该结构体对应的函数指针所指向的函数，open对应的就是init函数指针所指向的函数，该函数里面就会调用具体的编码库的API，比如libx264这个Codec会调用libx264的编码库的API，而LAME这个Codec会调用LAME的编码库的API，并且会以对应的AVCodecContext中的priv_data来填充对应第三方库所需要的私有参数，如果开发者没有对属性priv_data填充值，那么就使用默认值。
+
+**4.avcodec_close分析**
+
+如果理解了avcodec_open，那么对应的close就是一个逆过程，找到对应的实现文件中的close函数指针所指向的函数，然后该函数会调用对应第三方库的API来关闭掉对应的编码库。其实FFmpeg所做的事情就是透明化所有的编解码库，用自己的封装来为开发者提供统一的接口。
+
+#### 解码常用API分析
+
+**1.avformat_open_input分析**
+
+函数avformat_open_input会根据所提供的文件路径判断文件的格式，其实就是通过这一步来决定使用的到底是哪一个Demuxer。举例来说，如果是flv，那么Demuxer就会使用对应的ff_flv_demuxer，所以对应的关键生命周期的方法read_header、read_packet、read_seek、read_close都会使用该flv的Demuxer中函数指针指定的函数。read_header函数会将AVStream结构体构造好，以便后续的步骤继续使用AVStream作为输入参数。
+
+**2.avformat_f ind_stream_info分析**
+
+这个函数非常重要，如何在直播场景下的拉流客户端中“秒开首屏”，就是与该函数分析的代码实现息息相关的，该方法的作用就是把所有Stream的MetaData信息填充好。方法内部会先查找对应的解码器，然后打开对应的解码器，紧接着会利用Demuxer中的read_packet函数读取一段数据进行解码，当然解码的数据越多，分析出的流信息就会越准确，如果是本地资源，那么很快就可以得到非常准确的信息了，但是对于网络资源来说，则会比较慢，因此该函数有几个参数可以控制读取数据的长度，一个是probe size，一个是max_analyze_duration，还有一个是fps_probe_size，这三个参数共同控制解码数据的长度，当然，如果配置这几个参数的值越小，那么这个函数执行的时间就会越快，但是会导致AVStream结构体里面一些信息（视频的宽、高、fps、编码类型等）不准确。
+
+**3.av_read_frame分析**
+
+使用该方法读取出来的数据是AVPacket，该函数的实现首先会委托到Demuxer的read_packet方法中去，当然read_packet通过解复用层和协议层的处理之后，会将数据返回到这里，在该函数中进行数据缓冲处理。前面曾说过，对于音频流，一个AVPacket可能包含多个AVFrame，但是对于视频流，一个AVPacket只包含一个AVFrame，该函数最终只会返回一个AVPacket结构体。
+
+**4.avcodec_decode分析**
+
+该方法包含了两部分内容：一部分是解码视频，一部分是解码音频。在上面的函数分析中，我们知道，解码是会委托给对应的解码器来实施的，在打开解码器的时候就找到了对应解码器的实现，比如对于解码H264来讲，会找到ff_h264_decoder，其中会有对应的生命周期函数的实现，最重要的就是init、decode、close这三个方法，分别对应于打开解码器、解码以及关闭解码器的操作，而解码过程就是调用decode方法。
+
+**5.avformat_close_input分析**
+
+该函数负责释放对应的资源，首先会调用对应的Demuxer中的生命周期read_close方法，然后释放掉AVFormatContext，最后关闭文件或者远程网络连接。
+
+#### 编码常用API分析
+
+**1.avformat_alloc_output_context2分析**
+
+该函数内部需要调用方法avformat_alloc_context来分配一个AVFormatContext结构体，当然最关键的还是根据上一步注册的Muxer和Demuxer部分（也就是封装格式部分）去找到对应的格式。有可能是flv格式、MP4格式、mov格式，甚至是MP3格式等，如果找不到对应的格式（即在conf igure选项中没有打开这个格式的开关），那么这里会返回找不到对应的格式的错误提示。在调用API的时候，可以使用av_err2str把返回整数类型的错误代码转换为肉眼可读的字符串，这在调试的时候是一个比较有用的工具函数。该函数最终会将找出来的格式赋值给AVFormatContext类型的oformat。
+
+**2.avio_open2分析**
+
+首先调用函数ffurl_open，构造出URLContext结构体，这个结构体中包含了URLProtocol（需要去第一步register_protocol中已经注册的协议链表中寻找）；接着会调用avio_alloc_context方法，分配出AVIOContext结构体，并将上一步构造出来的URLProtocol传递进来；然后把上一步分配出来AVIOContext结构体赋值给AVFormatContext的属性。而该过程恰好是上面所分析的avformat_open_input函数的实现过程的一个逆过程。之前就提到过，编码过程和解码过程从逻辑上来讲本来就是一个逆过程，所以在FFmpeg的实现过程中它们也是一个逆过程。
+
+后面的步骤也都是解码的一个逆过程，解码过程中的av_f ind_stream_info对应到这里就是avformat_new_stream和avformat_write_header。avformat_new_stream函数会将音频流或者视频流的信息填充好，分配出AVStream结构体，在音频流中分配声道、采样率、表示格式、编码器等信息，在视频流中分配宽、高、帧率、表示格式、编码器等信息；avformat_write_header函数与解码过程中的read_header恰好是一个逆过程，因此这里将不再介绍。接下来就是编码的阶段了，开发者需要将手动封装好的AVFrame结构体，作为avcodec_encode_video方法的输入，将其编码成为AVPacket，然后调用av_write_frame方法输出到媒体文件中。而av_write_frame方法会将编码后的AVPacket结构体作为Muxer中的write_packet生命周期方法的输入，write_packet函数会加上自己封装格式的头信息，然后调用协议层写到本地文件或者网络服务器上。最后一步就是av_write_trailer，该函数有一个非常大的坑，如果没有执行write_header操作，就直接执行write_trailer操作，程序会直接崩溃（即Crash掉），所以必须保证这两个函数成对出现。write_trailer函数的实现会把没有输出的AVPacket全部丢给协议层去做输出，然后会调用Muxer的write_trailer生命周期方法，对于不同的格式写出的尾部也不尽相同，这里不再逐一介绍。

@@ -1,6 +1,6 @@
 从大的项目中抽取出一个个小专题写分享笔记，可做小DEMO，好的部分记得复用发推文或者组内分享，以后工作需要的时候直接看笔记
 效率比时间更重要，目标进byte，所以要聚焦列出byte的工作要求，吃透每一个技术点，最快的时间达到并超越。
-【HL】事情：投简历 +背面试题+ 做笔试题 + 完成作品
+【HL】事情：投简历 +背面试题+ 做笔试题 + 开发完展示作品（缺少合成功能，跨平台）+ 自研播放器、录制、编辑框架
 
 待办事项:
 1. 
@@ -14,7 +14,7 @@
 
 二、怎么保证吃透每一个技术点：
 
-每个点拆分出N个小task，带着任务去学习和实践，效率会高很多。
+每个点拆分出N个小task，带着任务去学习和写代码，才能高速成长。
 每完成一个task，都要输出代码和笔记（总结规律）
 
 三、task breakdown，如下标准分类：
@@ -74,6 +74,12 @@ x. FFmepg音视频开发（x）x
 2. OpenGL ES 移动端开发（二）GLSL语法与内建函数 【done】
 3. OpenGL ES 移动端开发（三）OpenGL ES渲染管线 【done】
 4. OpenGL ES 移动端开发（四）创建第一个Program
+5. OpenGL ES 移动端开发（五）Android平台OpenGL ES上下文环境搭建
+6. OpenGL ES 移动端开发（六）IOS平台OpenGL ES上下文环境搭建
+6. OpenGL ES 移动端开发（七）如何使用纹理渲染图片
+7. OpenGL ES 移动端开发（八）如何使用OpenGL ES添加水印
+8. OpenGL ES 移动端开发（九）如何实现动态贴纸特效
+
 x.OpenGL ES 移动端开发（x）x
 Android OpenGL ES 2D贴纸实现 //参考cain以及PngSequenceFilter实现
 
@@ -87,13 +93,20 @@ OpenGLES滤镜开发
 1. 视频播放疑难杂症排查（二）
 
 专题6：
-1. IOS音视频开发（一）
+1. IOS音视频开发（一）如何采集音频
+2. IOS音视频开发（二）如何播放音频
+3. IOS音视频开发（三）如何采集预览相机画面
+4. IOS音视频开发（四）如何使用AudioToolBox硬件编码AAC
+5. IOS音视频开发（五）如何使用VideoToolBox硬件编码H.264
+6. IOS音视频开发（六）如何使用AudioToolBox硬件解码AAC
+7. IOS音视频开发（七）如何使用VideoToolBox硬件解码H.264
 
+. IOS音视频开发（）
 专题7：
 《算法与数据结构 C语言描述》
 
 专题8：
-Android 视频播放器开发
+Android视频播放器开发
 
 专题9：
 Android 视频录制App开发
@@ -120,3 +133,13 @@ https://glumes.com/
 https://www.jianshu.com/u/fd6f2b25d0f4
 https://www.cnblogs.com/renhui/category/1011048.html
 https://github.com/byhook/ffmpeg4android
+
+努力的目标：完成展示作品（iOS仿抖音app）,task breakdown
+拆分成两大功能，分别为短视频播放、录制
+1.短视频播放已有开源代码参考
+2.短视频录制分为UI和录制逻辑，短视频录制还没找到轮子，录制逻辑已有轮子
+
+参考轮子：
+https://github.com/458722227/CoverDouyin 仿抖音，视频播放，视频录制，音视频合成
+https://github.com/ZZZZou/AwemeLike 仿照抖音的特效相机，实现美颜、2D贴图、分屏、转场等
+https://github.com/qwsem/short-video-ios 仿抖音短视频IOS版源码

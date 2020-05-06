@@ -101,8 +101,13 @@ tags:
 
 #### 5.IOS音视频开发
 
-- [x] []()
-- [ ] 
+- [x] [IOS音视频开发（一）如何采集音频](https://daimaren.github.io/2020/05/10/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E4%B8%80-%E5%A6%82%E4%BD%95%E9%87%87%E9%9B%86%E9%9F%B3%E9%A2%91/)
+- [ ] [IOS音视频开发（二）如何播放音频](https://daimaren.github.io/2020/05/11/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E4%BA%8C-%E5%A6%82%E4%BD%95%E6%92%AD%E6%94%BE%E9%9F%B3%E9%A2%91/)
+- [ ] [IOS音视频开发（三）如何采集预览相机画面](https://daimaren.github.io/2020/05/12/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E4%B8%89-%E5%A6%82%E4%BD%95%E9%87%87%E9%9B%86%E9%A2%84%E8%A7%88%E7%9B%B8%E6%9C%BA%E7%94%BB%E9%9D%A2/)
+- [ ] [IOS音视频开发（四）如何使用AudioToolBox硬件编码AAC](https://daimaren.github.io/2020/05/13/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E5%9B%9B-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8AudioToolBox%E7%A1%AC%E4%BB%B6%E7%BC%96%E7%A0%81AAC/)
+- [ ] [IOS音视频开发（五）如何使用VideoToolBox硬件编码H.264]()
+- [ ] [IOS音视频开发（六）如何使用AudioToolBox硬件解码AAC](https://daimaren.github.io/2020/05/15/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E5%85%AD-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8AudioToolBox%E7%A1%AC%E4%BB%B6%E8%A7%A3%E7%A0%81AAC/)
+- [ ] [IOS音视频开发（七）如何使用VideoToolBox硬件解码H.264](https://daimaren.github.io/2020/05/16/IOS%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91-%E4%B8%83-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VideoToolBox%E7%A1%AC%E4%BB%B6%E8%A7%A3%E7%A0%81H.264/)
 
 ### 6.多媒体封装格式剖析
 
